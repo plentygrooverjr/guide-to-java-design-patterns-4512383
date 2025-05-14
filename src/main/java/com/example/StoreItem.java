@@ -1,6 +1,6 @@
 package com.example;
 
-public class StoreItem
+private class StoreItem
 
 {
     private final String name;
@@ -10,14 +10,13 @@ public class StoreItem
     private final Integer stockAvailable;
     private final String packagingType;
 
-    public StoreItem(String name, Double price, String shortDescription, String longDescription,
-                     Integer stockAvailable, String packagingType) {
-        this.name = name;
-        this.price = price;
-        this.shortDescription = shortDescription;
-        this.longDescription = longDescription;
-        this.stockAvailable = stockAvailable;
-        this.packagingType = packagingType;
+    public StoreItem(StoreItembuilder storeItemBuilder) {
+        this.name = storeItemBuilder.name;
+        this.price = storeItemBuilder.price;
+        this.shortDescription = storeItemBuilder.shortDescription;
+        this.longDescription = storeItemBuilder.longDescription;
+        this.stockAvailable = storeItemBuilder.stockAvailable;
+        this.packagingType = storeItemBuilder.packagingType;
         if (name == null || price == null) {
             throw new IllegalArgumentException("Name and price must not be null");
         }
@@ -33,5 +32,43 @@ public class StoreItem
                 ", stockAvailable=" + stockAvailable +
                 ", packagingType='" + packagingType + '\'' +
                 '}';
+    }
+
+    public StoreItemBuilder class StoreItemBuilder {
+
+        private final String shortDescription;
+        private final String longDescription;
+        private final Integer stockAvailable;
+        private final String packagingType;
+        
+        public StoreItembuilder(String name, Double price) {
+                this.name = name;
+                this.price = price;
+                return this;
+            }
+
+            public StoreItemBuilder String shortDescription(String shortDescription) {
+                this.shortDescription = shortDescription);
+                return this;
+            }
+
+            public StoreItemBuilder String longDescription(String longDescription) {
+                this.longDescription = longDescription);
+                return this;
+            }
+
+            public StoreItemBuilder integer storeItemBuilder(integer storeItemBuilder) {
+                this.storeItemBuilder = storeItemBuilder);
+                return this;
+            }
+
+            public StoreItemBuilder String packagingType(String packagingType) {
+                this.packagingType = packagingType);
+                return this;
+            }
+
+            public StoreItemBuilder build() {
+                return new StoreItemBuilder(this);
+            }
     }
 }
